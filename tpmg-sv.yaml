@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: tpmg-sv
+  name: tpmg-sv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: tpmg-sv
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: tpmg-sv
+    spec:
+      containers:
+      - image: tpmg-sv:a2
+        imagePullPolicy: Never
+        name: tpmg-sv
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,66 @@
+apiVersion: v1
+data:
+  config.yaml: "server:\r\n  port: 8080\r\n  ipAddress: tpmg-sv \r\nspring:\r\n  servlet:\r\n
+    \   multipart:\r\n      max-file-size: 128MB\r\n  liquibase:\r\n    enabled: false\r\n
+    \   change-log: classpath:/db/changelog/changelog-master.xml\r\n  datasource:\r\n
+    \   driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver\r\n    url:
+    jdbc:sqlserver://tpmg-sv;databaseName=tdm_mdo_db\r\n  jpa:\r\n    database-platform:
+    org.hibernate.dialect.SQLServerDialect\r\n    hibernate:\r\n      ddl-auto: none\r\n
+    \   properties:\r\n      hibernate:\r\n        format_sql: true\r\n        type:
+    trace\r\n        use_sql_comments: true\r\n    show-sql: true\r\n\r\n\r\n\r\nconstants:\r\n
+    \ mrn: mrn\r\n  xMemberInfo: X-memberInfo\r\n  xApiRequest: X-apiRequest\r\n  username:
+    username\r\n  messageIds: messageIds\r\n  dataInput: dataInput\r\n  targetMrn:
+    targetMrn\r\n  ssoSession: ssoSession\r\n  cookie: Cookie\r\n  get: GET\r\n  put:
+    PUT\r\n  message: message\r\n  any: ANY\r\n  nc: nc\r\n  nc_12: 12\r\n  response:
+    response\r\n  messageDetail: messageDetail\r\n  header: header\r\n  messageID:
+    messageID\r\n  folderSent: folder SENT\r\n  members: members\r\n  sendMessageResponse:
+    SendMessageResponse\r\n  userInfo: userInfo\r\n  userID: userID\r\n  soguid: soguid\r\n
+    \ equalTo: =\r\n  appAvailableSlotsForSchedule: AppAvailableSlotsForSchedule\r\n
+    \ yyyyMMdd: yyyyMMdd\r\n  HHmm: HHmm\r\n  appts: appts\r\n  apptDate: apptDate\r\n
+    \ apptTime: apptTime\r\n  apptBeginTime: apptBeginTime\r\n  apptDay: apptDay\r\n
+    \ today: TOD\r\n  tomorrow: TOM\r\n  nextDay: DAY_AFTER_TOM\r\n  params: params\r\n
+    \ bookingCode: bookingCode\r\n  pap: PAP\r\n  mammo: MAMMO\r\n  wel: WEL\r\n  appointmentBookReasonList:
+    AppointmentBookReasonList\r\n  testResultsSummary: TestResultsSummary\r\n  testResultDetails:
+    TestResultDetails\r\n  testResultDetailsHistory: TestResultDetailHistory\r\n  default_:
+    default\r\n  id: id\r\n  Summary: Summary\r\n  Name: Name\r\n  testResults: TestResults\r\n
+    \ messagesId: MessagesId\r\n  withAttachment: WITH_ATTACHMENT\r\n  withoutAttachment:
+    WITHOUT_ATTACHMENT\r\n  carev2Token: carev2.0token\r\n  user: user\r\n  guid:
+    guid\r\n  xUserId: X-userId\r\n  token: token\r\n  consumerkeepalive: consumerkeepalive\r\n
+    \ soguid_: \"soguid=\"\r\n  selectedPortletImg: classpath:documents/images/selected_portlet.gif\r\n
+    \ getPrivacyContentPath: classpath:documents/static/getPrivacyContent.html\r\n
+    \ messagesAttachments: /opt/sv/attachments/\r\n  contentType: Content-Type\r\n
+    \ setCookie: Set-Cookie\r\n  configList: configList\r\n  value: value\r\n  ip_port:
+    \"%1$s:%2$s\"\r\n  deleteDataMsg: Successfully Deleted all information for ‘%s’
+    – reload new chlsj\r\n  clearMrnMsg: Successfully cleared MRNs for ‘%s’ – click
+    on “generate” button to generate new mrn data\r\n  relid: relid\r\n  xComponentID:
+    X-componentIDs\r\n  getMessages: messages\r\n  folderInbox: \"folder INBOX\"\r\n
+    \ getMessageById: messages\r\n  dateFormat: EEE, d MMM yyyy HH:mm:ss z\r\n  gmt:
+    GMT\r\n  date: Date\r\n  multipartFormdata: multipart/form-data\r\n  body: body\r\n
+    \ forwardSlash: /\r\n\r\n\r\n  endpoints:\r\n    uri:\r\n      anyMrnList: /sv/getAppProfile,/sv/css/ealert_ios.css,/sv/css/ealert_android.css,/sv/url/patterns,/sv/testresults/informationcontent,/sv/getSystemStatus,/sv/getFacilityDBChangeStatus,/sv/keepSessionAlive,/sv/signout\r\n
+    \     messageById: /sv/messages/{id}\r\n      message: /sv/message\r\n      messages:
+    /sv/messages\r\n      startSession: /sv/startSession\r\n      confirmschedule:
+    /sv/appointment/confirmschedule\r\n      deleteMsgs: /sv/deleteMsgs\r\n      iosCss:
+    /sv/css/ealert_ios.css\r\n      #      bookreasonlist: /sv/appointment/bookreasonlist\r\n
+    \     #      availableslotsforschedule: /sv/appointment/availableslotsforschedule\r\n
+    \     #      testResultsSummary: /sv/testresultssummary\r\n      #      testResultDetails:
+    /sv/testresultdetails\r\n      #      token: /sv/token\r\n      #      v2Token:
+    /sv/care/v2.0/token\r\n      #      keepAlive: /sv/health/mycare/consumer/keepalive\r\n
+    \     defaultHoursToAdd: 5\r\n      messageByIdRegex: /sv/messages/\\d+\r\n      getAppProfile:
+    /sv/getAppProfile\r\n      #      selectedPortlet: /sv/consumernet/themes/html/consumernet/images/selected_portlet.gif\r\n\r\n\r\n
+    \     python:\r\n        invokeEndpoints: true\r\n        createAppointment: http://tpmg-tdm.default.svc.cluster.local:5000/createAppointment\r\n
+    \       generateMessages: http://tpmg-tdm.default.svc.cluster.local:5000/generateMessages\r\n
+    \       updateMrnForSentMessages: http://tpmg-tdm.default.svc.cluster.local:5000/updateMrnForSentMessages\r\n
+    \       deleteMessages: http://tpmg-tdm.default.svc.cluster.local:5000/deleteMessages\r\n\r\n#
+    \     python:\r\n#        invokeEndpoints: true\r\n#        createAppointment:
+    http://localhost:5000/createAppointment\r\n#        generateMessages: http://localhost:5000/generateMessages\r\n#
+    \       updateMrnForSentMessages: http://localhost:5000/updateMrnForSentMessages\r\n#
+    \       deleteMessages: http://localhost:5000/deleteMessages\r\n\r\n\r\n\r\n\r\n\r\nlogging:\r\n
+    \ level:\r\n    org:\r\n      hibernate:\r\n        type: TRACE\r\n\r\n# to enable
+    https port uncomment below configuration\r\n\r\n# https configuration start here\r\n\r\n#server:\r\n#
+    \ port: 8080\r\n#  ssl:\r\n#    key-store: classpath:keystore/tpmgsv.p12\r\n#
+    \   key-store-password: tpmgsv\r\n#    keyStoreType: PKCS12\r\n#    keyAlias:
+    tpmgsv\r\n\r\n# https configuration end here\r\n\r\n\r\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: tpmg-sv

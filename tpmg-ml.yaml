@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: tpmg-ml
+  name: tpmg-ml
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: tpmg-ml
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: tpmg-ml
+    spec:
+      containers:
+      - image: tpmg-ml:a1
+        imagePullPolicy: Never
+        name: tpmg-ml
+        ports:
+        - containerPort: 5001
+        volumeMounts:
+          - name: tpmg-ml-config-volumes
+            mountPath: /opt/ml/config
+          - name: tpmg-ml-secrets
+            mountPath: /opt/ml/cred
+            readOnly: true
+      volumes:
+          - name: tpmg-ml-config-volumes
+            configMap:
+              defaultMode: 420
+              name: tpmg-ml
+          - name: tpmg-ml-secrets
+            secret:
+              secretName: tpmg-ml

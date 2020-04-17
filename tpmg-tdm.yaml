@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: tpmg-tdm
+  name: tpmg-tdm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: tpmg-tdm
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: tpmg-tdm
+    spec:
+      containers:
+      - image: tpmg-tdm:a1
+        imagePullPolicy: Never
+        name: tpmg-tdm
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+          - name: tpmg-tdm-config-volumes
+            mountPath: /opt/tdm/conf
+          - name: tpmg-tdm-secrets
+            mountPath: /opt/tdm/cred
+            readOnly: true
+      volumes:
+          - name: tpmg-tdm-config-volumes
+            configMap:
+              defaultMode: 420
+              name: tpmg-tdm
+          - name: tpmg-tdm-secrets
+            secret:
+              secretName: tpmg-tdm

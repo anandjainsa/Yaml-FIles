@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  config.properties: |
+    #Server=172.16.226.99
+    Server=172.16.101.197
+    #Username = sa
+    #Password=sysadmin@123
+    PortNo=1433
+    DataBase=tdm_mdo_db
+    mrntablename=mrn_details
+    flaskIp=0.0.0.0
+    extractMRNurl = http://tpmg-ml:5001/extractMRNs/
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: tpmg-tdm

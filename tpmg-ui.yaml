@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: tpmg-ui
+  name: tpmg-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: tpmg-ui
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: tpmg-ui
+    spec:
+      containers:
+      - image: tpmg-ui:a1
+        imagePullPolicy: Never
+        name: tpmg-ui
+        ports:
+        - containerPort: 80

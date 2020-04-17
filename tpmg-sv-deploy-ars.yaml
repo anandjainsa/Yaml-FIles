@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: tpmg-sv
+  name: tpmg-sv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: tpmg-sv
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: tpmg-sv
+    spec:
+      containers:
+      - image: matten-test:v2
+        args: ["--spring.config.name=application,credentials","--spring.config.location=/opt/sv/config/,/opt/sv/cred/"]
+        imagePullPolicy: Never
+        name: tpmg-sv
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+          - name: tpmg-sv-config-volumes
+            mountPath: /opt/sv/config
+          - name: tpmg-sv-secrets
+            mountPath: /opt/sv/cred
+      volumes:
+          - name: tpmg-sv-config-volumes
+            configMap:
+              name: tpmg-sv
+          - name: tpmg-sv-secrets
+            secret:
+              secretName: tpmg-sv
